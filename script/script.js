@@ -1,4 +1,5 @@
 var isFirstSearch = true;
+var cardArray = [];
 
 $(document).ready(function() {
   $("#search-btn").on("click", function(event) {
@@ -28,27 +29,49 @@ $(document).ready(function() {
 })
 
 function showResults(data) {
+  console.log("================SEARCH STARTED====================================");
+
   if (!isFirstSearch) {
     // remove previous results
-    // for now log not first search
     console.log("not first search!");
+    cardArray.forEach(function(card){
+      card.remove();
+    })
   }
 
+  // log data for testing
+  console.log("...search results in following object: ");
+  console.log(data)
+
   // remove random-btn, move search box to top
-  // for only remove
+  // for now only remove
   console.log("...removing random-btn: ");
   $("#random-btn").remove();
 
   // generate a card element for each result
-  console.log("...individual title: ");
-  data[1].forEach(function(title) {
-    console.log(title);
-  });
+  for (var i = 0; i < data[1].length; i++) {
+    // clone a card
+    var newCard = document.getElementById("dummyCard").cloneNode(true);
+    // remember clone to delete for next search
+    cardArray.push(newCard);
 
+    //put contents in
+    newCard.querySelector("h4").innerHTML = data[1][i];
+    newCard.querySelector("p").innerHTML = data[2][i];
+    newCard.querySelector("a").setAttribute("href", data[3][i]);
+
+    // display card
+    newCard.style.display = "flex";
+    document.getElementById("results").appendChild(newCard);
+  }
+
+
+  //test putting first result in placeholder
+  // $(".card-block h4").html(data[1][0]);
+  // $(".card-block p").html(data[2][0]);
+  // $(".card-block").attr("href",data[3][0])
   // flip isFirstSearch
   isFirstSearch = false;
 
-  // log result for testing
-  console.log("...searchResult: ");
-  console.log(data);
+  ;
 }
