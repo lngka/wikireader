@@ -65,11 +65,10 @@ function showResults(data) {
     document.getElementById("results").appendChild(newCard);
   }
 
+  // update bg to prevent overflow
+  var newHeight =   document.getElementsByTagName("body")[0].clientHeight;
+  document.getElementsByClassName("bg")[0].style.height = newHeight + "px";
 
-  //test putting first result in placeholder
-  // $(".card-block h4").html(data[1][0]);
-  // $(".card-block p").html(data[2][0]);
-  // $(".card-block").attr("href",data[3][0])
   // flip isFirstSearch
   isFirstSearch = false;
 

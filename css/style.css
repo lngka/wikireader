@@ -12,11 +12,11 @@ body {
   z-index: -5;
   background-color: #4C416D;
   min-width: 100%;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 #main {
-  padding-top: 20vh;
+  padding-top: 30vh;
 }
 
 #inlineFormInput,
@@ -34,8 +34,6 @@ body {
  }
 
 #dummyCard {
-  position: relative;
-  z-index: -4;
   width: 80%;
   min-height: 5rem;
   margin: auto;
@@ -54,4 +52,15 @@ a.nostyle:visited {
     text-decoration: inherit;
     color: inherit;
     cursor: auto;
+}
+
+/*animations*/
+@keyframes slideUp {
+  0% {padding-top: 30vh;}
+  100% {padding-top: 5vh;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }
