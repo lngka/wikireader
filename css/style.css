@@ -33,15 +33,15 @@ body {
    margin-top: 1rem;
  }
 
-#dummyCard {
+.dummyCard {
   width: 80%;
-  min-height: 5rem;
+  min-height: 3rem;
   margin: auto;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
   display: none;
 }
 
-/*remove styling from a.nostyle*/
+/*remove styling from result cards*/
 a.nostyle:link {
     text-decoration: inherit;
     color: inherit;
@@ -53,9 +53,13 @@ a.nostyle:visited {
     color: inherit;
     cursor: auto;
 }
-
+/*button style*/
+.btn{
+  background-color: transparent !important;
+  border: 0px;
+}
 /*animations*/
-@keyframes slideUp {
+@keyframes goUp {
   0% {padding-top: 30vh;}
   100% {padding-top: 5vh;}
 }
@@ -63,4 +67,18 @@ a.nostyle:visited {
 @keyframes fadeIn {
   0% {opacity: 0;}
   100% {opacity: 1;}
+}
+
+.fadeIn {
+  -webkit-animation-duration: 0.7s;
+  animation-duration: 0.7s;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.goUp {
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-name: goUp;
+  animation-name: goUp;
 }

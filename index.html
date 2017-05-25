@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <!-- custom  CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- icon for media buttons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>WikiReader</title>
   </head>
   <body>
@@ -20,15 +22,15 @@
         <form class="form-inline">
           <label class="sr-only" for="inlineFormInput">Search term</label>
           <input type="text" class="form-control" id="inlineFormInput" placeholder="//search term here">
-          <button type="submit" id="search-btn" class="btn btn-primary">Search</button>
-          <a id="random-btn" class="btn btn-info" role="button" href="https://en.wikipedia.org/wiki/Special:Random">Random</a>
+          <button type="submit" id="search-btn" class="btn btn-primary"><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
+          <a id="random-btn" class="btn btn-info" role="button" href="https://en.wikipedia.org/wiki/Special:Random"><i class="fa fa-random fa-2x" aria-hidden="true"></i></a>
         </form>
       </div>
       <div class="col"></div>
     </div>
     <!-- results placeholder -->
     <div id="results" class="row">
-      <div id="dummyCard" class="card">
+      <div class="card fadeIn dummyCard">
         <a href="https://google.com" class="card-block nostyle">
           <h4>//title placeholder</h4>
           <p>//result placeholder</p>

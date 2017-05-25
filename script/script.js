@@ -29,14 +29,19 @@ $(document).ready(function() {
 })
 
 function showResults(data) {
-  console.log("================SEARCH STARTED====================================");
-
+  console.log("==========================SEARCH STARTED===============================");
+  if (data[1].length === 0) {
+    alert("No match");
+    return;
+  }
+  document.getElementById("main").classList.add("goUp");
+  document.getElementById("main").style["padding-top"] = "5vh";
   if (!isFirstSearch) {
     // remove previous results
-    console.log("not first search!");
     cardArray.forEach(function(card){
       card.remove();
     })
+    cardArray.splice(0);
   }
 
   // log data for testing
@@ -50,8 +55,9 @@ function showResults(data) {
 
   // generate a card element for each result
   for (var i = 0; i < data[1].length; i++) {
-    // clone a card
-    var newCard = document.getElementById("dummyCard").cloneNode(true);
+
+    var newCard = document.getElementsByClassName("dummyCard")[0].cloneNode(true);
+
     // remember clone to delete for next search
     cardArray.push(newCard);
 
@@ -59,18 +65,21 @@ function showResults(data) {
     newCard.querySelector("h4").innerHTML = data[1][i];
     newCard.querySelector("p").innerHTML = data[2][i];
     newCard.querySelector("a").setAttribute("href", data[3][i]);
-
-    // display card
     newCard.style.display = "flex";
-    document.getElementById("results").appendChild(newCard);
   }
 
-  // update bg to prevent overflow
-  var newHeight =   document.getElementsByTagName("body")[0].clientHeight;
-  document.getElementsByClassName("bg")[0].style.height = newHeight + "px";
+  // add results one by one
+  var i = 0;
+  var animateResult = setInterval(function(){
+    document.getElementById("results").appendChild(cardArray[i]);
+    if (cardArray.length - 1 == i++) {
+      var newHeight = document.getElementsByTagName("body")[0].clientHeight;
+      document.getElementsByClassName("bg")[0].style.height = newHeight + "px";
+      clearInterval(animateResult);
+    }
+  }, 200);
+
 
   // flip isFirstSearch
   isFirstSearch = false;
-
-  ;
 }
