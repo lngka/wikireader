@@ -1,5 +1,6 @@
 var isFirstSearch = true;
 var cardArray = [];
+var inlineFormInput = document.getElementById("inlineFormInput");
 
 $(document).ready(function() {
   $("#search-btn").on("click", function(event) {
@@ -9,7 +10,7 @@ $(document).ready(function() {
 
     // tell if no keyWord
     if (keyWord == "" || keyWord.match(/^\s+$/)) {
-      alert("Keyword required to search!");
+      alert("Add some text friend :D");
     }
 
     // else do a search
@@ -26,6 +27,14 @@ $(document).ready(function() {
       })
     }
   })
+
+  document.getElementById("inlineFormInput").onfocus = function() {
+    document.getElementsByClassName("form-inline")[0].style.boxShadow = "0px 0px 15px rgba(148, 49, 38 ,1)";
+  };
+
+  document.getElementById("inlineFormInput").onblur = function() {
+    document.getElementsByClassName("form-inline")[0].style["box-shadow"] = "0px 0px 10px rgba(148, 49, 38 ,0)";
+  };
 })
 
 function showResults(data) {
@@ -34,8 +43,10 @@ function showResults(data) {
     alert("No match");
     return;
   }
+
   document.getElementById("main").classList.add("goUp");
   document.getElementById("main").style["padding-top"] = "5vh";
+
   if (!isFirstSearch) {
     // remove previous results
     cardArray.forEach(function(card){
@@ -47,11 +58,6 @@ function showResults(data) {
   // log data for testing
   console.log("...search results in following object: ");
   console.log(data)
-
-  // remove random-btn, move search box to top
-  // for now only remove
-  console.log("...removing random-btn: ");
-  $("#random-btn").remove();
 
   // generate a card element for each result
   for (var i = 0; i < data[1].length; i++) {

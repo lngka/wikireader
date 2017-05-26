@@ -5,13 +5,18 @@
 body {
   position: relative;
   z-index: 0;
+  overflow-x: hidden;
 }
 
+p {
+  font-family: "Comfortaa", sans-serif;
+}
 .bg {
   position: absolute;
   z-index: -5;
-  background-color: #4C416D;
-  min-width: 100%;
+  /*background-color: #4C416D;*/
+  background: url("bg.jpg") no-repeat center center fixed;
+  width: 100vw;
   height: 100vh;
 }
 
@@ -19,23 +24,19 @@ body {
   padding-top: 30vh;
 }
 
-#inlineFormInput,
-#search-btn,
-#random-btn {
-  color: white;
-  background-color: #416D4C;
-  border-color: #6D4C41;
+/*center when wrap for small screen width*/
+.btn-group {
+  margin: auto;
 }
-
-
  /*styling for result cards*/
  #results {
    margin-top: 1rem;
  }
 
 .dummyCard {
-  width: 80%;
+  width: 70%;
   min-height: 3rem;
+  max-height: 8rem;
   margin: auto;
   margin-bottom: 0.3rem;
   display: none;
@@ -54,9 +55,34 @@ a.nostyle:visited {
     cursor: auto;
 }
 /*button style*/
-.btn{
+.btn {
   background-color: transparent !important;
   border: 0px;
+}
+
+.btn abbr{
+  cursor: pointer;
+}
+
+#random-btn{
+  transform: translateY(0.1rem);
+  margin: 0rem;
+}
+
+
+#search-btn,
+#random-btn {
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0.5rem;
+  color: black;
+  transition: all 0.2s ease-in-out;
+  outline: 0;
+  border: 0;
+}
+#search-btn:hover,
+#random-btn:hover{
+  color: #9ecaed;
 }
 /*animations*/
 @keyframes goUp {
@@ -81,4 +107,30 @@ a.nostyle:visited {
   animation-duration: 1.5s;
   -webkit-animation-name: goUp;
   animation-name: goUp;
+}
+
+#inlineFormInput{
+  line-height: 2rem;
+  border-radius: 15px 0px 0px 15px;
+  outline: none;
+  border: none;
+  width: 6rem;
+  background: white;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#inlineFormInput:focus{
+  width: 50vw;
+}
+
+.search-btn-wrapper{
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border-radius: 0px 15px 15px 0px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.form-inline{
+  border-radius: 15px;
 }
